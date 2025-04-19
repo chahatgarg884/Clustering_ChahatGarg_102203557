@@ -1,41 +1,72 @@
-# Clustering_ChahatGarg_102203557
 
 
-## 🧠 Clustering Algorithm Comparison with Preprocessing
+#  Clustering Analysis on the Iris Dataset
 
-This project compares different clustering algorithms using various preprocessing techniques and evaluates them using standard clustering metrics.
+This project explores how different clustering algorithms and preprocessing techniques affect clustering quality on the Iris dataset. The goal is to evaluate *KMeans, **Hierarchical, and **MeanShift* clustering using combinations of transformations, normalization, and PCA.
 
-### 📌 Dataset
-- *Iris Dataset* from [UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/iris)
+---
 
-### ⚙ Preprocessing Techniques
-- No Processing  
-- Normalization (MinMax)  
-- Transformation (sqrt)  
-- PCA  
-- Transform + Normalize (T+N)  
-- Transform + Normalize + PCA (T+N+PCA)
+##  Objective
 
-### 📈 Clustering Algorithms
-- K-Means  
-- Hierarchical  
-- Mean Shift
+To compare how preprocessing methods influence the performance of clustering algorithms and to determine which combination yields the most meaningful clusters.
 
-### 📏 Evaluation Metrics
-- Silhouette Score  
-- Calinski-Harabasz Index  
-- Davies-Bouldin Score
+---
 
-### 🧪 Sample K-Means Results (Example)
+##  Dataset
 
-| Method       | Clusters | Silhouette | CH Index | DB Score |
-|--------------|----------|------------|----------|----------|
-| Normalization| 3        | 0.75       | 6653     | 0.59     |
-| T+N+PCA      | 4        | 0.62       | 1290     | 0.75     |
+- *Iris Dataset*  
+  - 150 samples, 4 features  
+  - 3 actual species of Iris flowers (used here only for evaluation, not for supervised learning)
 
-### ✅ Key Takeaways
-- Preprocessing can significantly improve clustering results.
-- PCA helps with dimensionality reduction and visualization.
-- Best results often come from combining transformation + normalization + PCA.
+---
 
+##  Preprocessing Methods
+
+1. *No Processing*  
+2. *Normalization* (MinMaxScaler)  
+3. *Transformation* (Square root)  
+4. *PCA* (2 components)  
+5. *Transform + Normalize*  
+6. *Transform + Normalize + PCA*
+
+---
+
+##  Clustering Algorithms
+
+| Algorithm       | Notes                                |
+|-----------------|--------------------------------------|
+| *KMeans*       | Requires predefined number of clusters |
+| *Hierarchical* | Agglomerative method (no training phase) |
+| *MeanShift*    | Finds number of clusters automatically |
+
+---
+
+##  Evaluation Metrics
+
+All models were evaluated using:
+
+- *Silhouette Score* — How well points fit within their cluster  
+- *Calinski-Harabasz Index* — Ratio of between- to within-cluster dispersion  
+- *Davies-Bouldin Score* — Lower is better (less intra-cluster variance)
+
+---
+
+##  Sample Results Snapshot
+
+| Algorithm  | Method     | Clusters | Silhouette | CH Index | DB Score |
+|------------|------------|----------|------------|----------|----------|
+| KMeans     | T+N+PCA    | 3        | 0.73       | 5601     | 0.58     |
+| Hierarchical | Normalize | 4      | 0.67       | 4103     | 0.63     |
+| MeanShift  | T+N        | 3        | 0.72       | 4982     | 0.59     |
+
+Full results can be found in the [Jupyter notebook].
+
+---
+
+##  Conclusion
+
+- Preprocessing plays a significant role in cluster separation.
+- PCA reduces dimensionality for better visualization.
+- MeanShift is flexible but computationally heavier.
+- A combination of *Transformation + Normalization + PCA* with *KMeans* often gives consistent results.
 
